@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+using namespace std;
+
+int main ()
+{
+	int t; cin >> t;
+	while(t--) {
+		ll n ; cin >> n ;
+		queue<ll> q ; 
+		stack<ll> st ; 
+		q.push(6) ;
+		q.push(8) ;
+		while(1) {
+			ll x = q.front();
+			if(x > pow(10,n)) break; 
+			st.push(x); 
+			q.pop() ;
+			q.push(x*10 + 6);
+			q.push(x*10 + 8); 
+		} 
+		while(st.size()) {
+			cout << st.top() << " ";
+			st.pop(); 
+		} e; 
+	} 
+}
+			
+    
+
+
+
+
+
+
+
+
+
