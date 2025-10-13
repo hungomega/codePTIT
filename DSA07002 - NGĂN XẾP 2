@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;
+
+using namespace std;
+
+int main ()
+{
+	int t ; cin >> t;
+	stack<int> st ; 
+	string s ; 
+	int x ; 
+	while(t--) {
+		cin >> s ; 
+		if(s == "PUSH") {
+			cin >> x ;
+			st.push(x); 
+		}
+		else if(s == "POP") {
+			if(!st.empty()) st.pop(); 
+		} 
+		else if(s == "PRINT") {
+			if(st.empty()) cout << "NONE" << endl ;
+			else {
+				cout << st.top() << endl ;
+			//	st.pop(); 
+			} 
+		} 
+	} 
+}
