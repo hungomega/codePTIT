@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl 
+
+int n , x[100];
+bool check = false; 
+
+void first() {
+	for(int i = 1 ; i <= n ; i++) x[i] = i ; 
+} 
+
+void sinh() {
+	int i = n - 1 ;
+	while(x[i] > x[i + 1] && i >= 1) {
+		--i ; 
+	}
+	
+	if(i == 0) check = true ;
+	else {
+		int j = n ; 
+		while(x[j] < x[i]) {
+			j--; 
+		} 
+		swap(x[j],x[i]); 
+		reverse(x + i + 1 , x + n + 1); 
+	} 
+} 
+int main ()
+{
+	int t ; cin >> t ;
+	while(t--) {
+		cin >> n ;
+		vector<vector<int>> v ; 
+		first(); 
+		while(!check) {
+			vector<int> tmp ; 
+			for(int i = 1 ; i <= n ; i++) {
+				tmp.pb(x[i]); 
+			}
+			v.pb(tmp);  
+			sinh(); 
+		} 
+		for(int i = v.size() - 1 ; i >= 0 ; i--) {
+			for(int x : v[i]) {
+				cout << x ; 
+			} 
+			cout << " "; 
+		} 
+		e; 
+		check = false ; 
+	} 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
