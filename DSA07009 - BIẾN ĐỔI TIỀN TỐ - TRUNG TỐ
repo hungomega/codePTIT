@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;
+  
+void check(string s){
+	stack<string> st ;
+	for(int i = s.size() - 1 ; i >= 0 ; i--) {
+		if(isalpha(s[i])) {
+			st.push(string(1,s[i])) ;
+		} else {
+			string x = st.top(); st.pop();
+			string y = st.top(); st.pop();
+			string xy = "(" + x + s[i] + y + ")";
+			st.push(xy); 
+		} 
+	}
+	cout << st.top() << endl ; 
+} 
+int main ()
+{
+	int t ; cin >> t ;
+	while(t--) 
+	{
+		string s ; cin >> s ;
+		check(s); 	
+	 } 
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
