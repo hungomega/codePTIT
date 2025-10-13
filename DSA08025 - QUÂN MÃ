@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+using namespace std;
+
+int dy[8] = {-2,-2,-1,-1,1,1,2,2}; // hàng 
+int dx[8] = {-1,1,-2,2,-2,2,-1,1}; // cột 
+
+struct A{
+	string pos;
+	int step;	
+};
+
+int main ()
+{
+	int t ; cin >> t;
+	while(t--)
+	{
+		string st,en; cin >> st >> en;
+		queue<A> q ;
+		q.push({st,0}); // vị trí đầu tiên
+		map<string,bool> check;
+		while(q.front().pos != en)
+		{
+			string pos = q.front().pos;
+			int step = q.front().step;
+			check[pos] = 1 ; // đánh dấu vị trí 
+			q.pop();
+			// check 8 ô xung quanh 
+			for(int k = 0 ; k < 8 ; k++)
+			{
+				string newP = pos ;
+				newP[0] += dx[k];
+				newP[1] += dy[k];
+				if(newP[0] < 'a' || newP[0] > 'h') continue ;
+				if(newP[1] < '1' || newP[1] > '8') continue ;
+				if(check[newP]) continue ;
+				q.push({newP,step+1});
+			}
+		}
+		cout << q.front().step << endl;
+	}
+}
+			
+    
+
+
+
+
+
+
+
+
+
