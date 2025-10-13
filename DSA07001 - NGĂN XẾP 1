@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;
+
+using namespace std;
+
+int main ()
+{
+	stack<int> st ; 
+	string s ; 
+	int x ;
+	while(cin >> s) {
+		if(s == "push") {
+			cin >> x ;
+			st.push(x); 
+		
+		}
+		else if(s == "pop") {
+			if(!st.empty()) {
+				st.pop(); 	
+			}
+		} 
+		else if(s == "show") {
+			stack<int> p ;
+			if(st.empty()) {
+				cout << "empty" << endl;
+				 
+			} 
+			else{
+			 while(!st.empty()) {
+			 	p.push(st.top()) ; //cai de in ra ket qua  
+			 //	m.push(st.top()) ; // ban sao cua st 
+			 	st.pop(); 
+			 } 
+			 while(!p.empty()) {
+			 	int i = p.top() ; p.pop() ;
+			 	st.push(i); 
+				cout << i << " "; 
+			 }
+			 cout << endl; 
+			} 
+		} 
+	} 
+}
+
+
+
+
+
+
+
+
+
+
