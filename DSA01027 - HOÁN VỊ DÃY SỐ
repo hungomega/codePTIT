@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;  
+
+int main ()
+{
+	int n ; cin >> n ; int a[n];
+	for(int i = 0 ; i < n ; i++) cin >> a[i];
+	sort(a,a+n); 
+	do {
+		for(int i = 0 ; i < n ; i++) {
+			cout << a[i] << " "; 
+		} 
+		e; 
+	} while(next_permutation(a,a+n)); 
+}
