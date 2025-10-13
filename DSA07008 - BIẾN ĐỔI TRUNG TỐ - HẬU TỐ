@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;
+  
+  
+  /* TH1 : co ngoac 
+  	 TH2 : co cac ky tu +-* chia => xét thu tu uu tien    
+  */
+int uutien(char a) {
+	if(a == '(' ) return 0 ;
+	else if(a == '-' || a == '+') return 1 ;
+	else if(a == '*' || a == '/') return 2 ; 
+	else if(a == '^') return 3 ; 
+}  
+  
+void check(string s){
+	stack<char> st ;
+	string res = "" ;
+	for(char x : s) {
+		if(isalpha(x)) res += x ;
+		else if(x == '(') st.push(x);
+		else if(x == ')') {
+			while(!st.empty() && st.top() != '(') {
+				res += st.top();
+				st.pop(); 
+			} 
+			st.pop(); 
+		} 
+		else {
+			while(!st.empty() && uutien(st.top()) >= uutien(x)) 
+			{
+				res += st.top() ;
+				st.pop(); 
+			}
+			st.push(x); 
+		} 
+	} 
+	while(!st.empty()) {
+		res += st.top(); 
+		st.pop(); 
+	} 
+	cout << res << endl ; 
+} 
+int main ()
+{
+	int t ; cin >> t ;
+	while(t--) 
+	{
+		string s ; cin >> s ;
+		check(s); 	
+	 } 
+}
