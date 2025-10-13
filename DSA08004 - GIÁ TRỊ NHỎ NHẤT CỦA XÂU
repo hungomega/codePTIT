@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+using namespace std;
+
+int main ()
+{
+	int testcase ; cin >> testcase;
+	while(testcase--)
+	{
+		int k , x; cin >> k ;
+		string s ; cin >> s ;
+		ll sum = 0 ;
+		map<char,int> m ;
+		priority_queue<int> q ; // những phần tử max sẽ được dồn về đầu dãy
+		
+		// lưu xâu dưới dạng map 
+		for(int i = 0 ; i < s.size() ; i++) {
+			++m[s[i]]; // đếm tần suất các ký tự trong xâu 
+		}
+		
+		// đưa ký tự có tần suất lớn nhất lên đầu hàng đợi 
+		for(auto x : m) q.push(x.second); 
+		
+		// thực hiện xóa các ký tự có tần suất max
+		while(k--) 
+		{
+			x = q.top(); 
+			q.pop();
+			q.push(x - 1); // cập nhật lại tần suất sau khi xóa thằng đứng đầu 
+		}
+		while(q.size())
+		{
+			sum += 1ll * q.top() * q.top();
+			q.pop();
+		}
+		cout << sum << endl ;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+    
+
+
+
+
+
+
+
+
+
