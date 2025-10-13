@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+using namespace std;
+
+int main ()
+{
+	int testcase ; cin >> testcase;
+	while(testcase--)
+	{
+		int s , t ; cin >> s >> t ;
+		queue<pair<ll,ll>> X;
+		X.push({s,0});
+		set<int> se;
+		se.insert(s);  	 
+		while(X.size()) {
+			pair<ll,ll> x = X.front();
+			X.pop();
+			// nếu 1 trong 2 thao tác thỏa mãn -> in ra
+			if(x.first - 1 == t || x.first*2 == t) 
+			{
+				cout << x.second + 1 << endl;
+				break;
+			}
+			// nếu không tồn tại số x.first - 1 ( số t ) 
+			if(se.count(x.first - 1) == 0 && x.first - 1 > 0) {
+				X.push({x.first - 1,x.second + 1});
+				se.insert(x.first - 1);
+			}
+			if(se.count(x.first * 2) == 0 && x.first < t) {
+				X.push({x.first * 2,x.second + 1});
+				se.insert(x.first*2);
+			}
+		}
+	}
+}
+			
+    
+
+
+
+
+
+
+
+
+
+
