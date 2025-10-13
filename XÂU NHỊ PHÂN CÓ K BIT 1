@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ; 
+int n , k , cnt = 0;
+int x[20]; 
+void result() {
+	if(cnt == k) 
+ 	{
+ 		for(int i = 1 ; i <= n ; i++)
+		{
+			cout << x[i] ; 
+		} 
+		e; 
+	}
+} 
+void Try(int i) 
+{
+	for(int j = 0; j <= 1 ; j++) {
+		x[i] = j ;
+		if(j == 1) ++cnt ; 
+		if(i == n) {
+			result();
+		}
+		else { 
+			Try(i + 1); 
+		} 
+		if(j == 1) --cnt ; // Backtrack 
+	} 
+} 
+int main () 
+{
+	int t ; cin >> t ;
+	while(t--)
+	{
+		cin >> n >> k ; 
+		cnt = 0; 
+		Try(1);  
+	} 
+}
