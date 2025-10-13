@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define e cout << endl
+using namespace std;
+int n , k ;
+vector<int> a(16) ; // vector để quay lui 
+vector<vector<int> > ans ; // vector kết quả 
+bool check() {
+	int cntA = 0 , cnt = 0 ; // cntA đếm số lượng ký tự A
+	for(int i = 1 ; i <= n ; i++) {
+		if(a[i] == 0) ++cntA;  
+		else cntA = 0 ;
+		if(cntA > k) return 0 ;
+		else if(cntA == k) cnt += 1; // đếm số lượng ký tự A liên tiếp 
+	}
+	return cnt == 1 ;
+} 
+// Quay lui xâu nhị phân => duyệt tất cả cấu hình 
+void Try(int i) {
+	for(int j = 0 ; j <= 1 ; j++) {
+		a[i] = j ;
+		if(i == n) {
+			if(check()) ans.push_back(a);  
+		}
+		else Try(i + 1);
+	}
+}
+int main()
+{
+    cin >> n >> k ;
+    Try(1);
+    cout << ans.size() << endl ;// in số lượng kết quả thỏa mãn
+    for(vector<int> v : ans) {
+    	for(int i = 1 ; i <= n ; i++) {
+    		if(v[i] == 0) cout << 'A';
+			else cout << 'B'; 
+		}
+		e;
+	}
+}
