@@ -1,0 +1,66 @@
+#include <iostream>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ; 
+
+/*
+Duy?t t? cu?i m?ng a ngư?c v? đ?u:
+
+	N?u g?p ph?n t? đ?u tiên mà a[i] ? a[i-1] + 1:
+
+		Gi?m a[i] đi 1.
+
+		N?u ph?n t? đó chưa b?ng n th? tăng d?n các ph?n t? t? v? trí i+1
+		đ?n cu?i lên 1 đơn v?.
+
+		Ngư?c l?i th? gi? nguyên.
+
+N?u duy?t h?t mà không có v? trí nào th?a a[i] ? a[i-1] + 1 và ph?n t? đ?u 
+tiên b?ng 1
+? Đây là c?u h?nh đ?u tiên ? in ra c?u h?nh cu?i cùng.
+*/
+int a[1005];
+int main()
+{
+	int t; cin >> t;
+	while (t--) {
+		int n, k;
+		cin >> n >> k;
+		for (int i = 1; i <= k; i++) {
+			cin >> a[i];
+		}
+		a[0] = 0 ; 
+		bool check = true;
+		for (int i = k; i >= 1; i--) {
+			if (a[i] != a[i - 1] + 1) {
+				check = false;
+				--a[i];
+				if (a[k] != n) {
+					for (int j = i + 1; j <= k; j++) {
+						a[j]++;
+					}
+				}
+				break; 
+			}
+		}
+		// đây là c?u h?nh đ?u tiên => c?n in ra c?u h?nh cu?i 
+		if (check && a[1] == 1) {
+			for (int i = 1; i <= k; i++)
+			{
+				cout << n - k + i << " ";
+			}
+		}
+		else {
+			for (int i = 1; i <= k; i++) cout << a[i] << " ";
+		}
+		e;
+	}
+}
