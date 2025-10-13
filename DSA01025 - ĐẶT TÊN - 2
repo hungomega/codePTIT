@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ; 
+
+int main ()
+{
+	int t ; cin >> t ;
+	while(t--) 
+	{
+		int n , k ; cin >> n >> k ;
+		int a[k + 1] ;
+		for(int i = 1 ; i <= k ; i++) a[i] = i ;
+		while(1)
+		{
+			int ok = 1 ;
+			for(int i = 1 ; i <= k ; i++) {
+				cout << (char)(a[i] - 1 + 'A'); 
+			} 
+			e; 
+			for(int i = k ; i >= 1 ; i--) {
+				if(a[i] != n - k + i) {
+					ok = 0; 
+					++a[i];
+					for(int j = i + 1 ; j <= k ; j++) 
+					{
+						a[j] = a[j - 1] + 1 ; 
+					 } 
+					 break ; 
+				} 
+			} 
+			if(ok) break ; 
+		 } 
+	 } 
+ }
