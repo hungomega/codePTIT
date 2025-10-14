@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+int main ()
+{
+	int t ; cin >> t; string s ;
+	while(t--) 
+	{
+		cin >> s;
+		stack<char> st ;
+		for(char x : s)
+		{
+			if(x == '(' || x == '[' || x == '{') {
+				st.push(x);
+			} else if(!st.empty()) {
+				if((x == ')' && st.top() == '(' ) || (x == ']' && st.top() == '[') || (x == '}' && st.top() == '{')) {
+					st.pop();
+				}
+			} 
+		}
+		if(st.empty()) cout << "YES\n";
+		else cout << "NO\n";
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+    
+
+
+
+
+
+
+
+
+
