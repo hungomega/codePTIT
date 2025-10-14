@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+using namespace std;
+
+// cách làm : duyệt từ trái -> phải nếu là số push vào ngăn xếp , nếu là ký tự lấy số từ ngăn xếp ra thực hiện phép tính 
+void in(string s) {
+	stack<int> st ;
+	for(int i = 0 ; i < s.length() ; i++)
+	{
+		if(isdigit(s[i]))
+		{
+			// nếu đây là ký tự số -> chuyển về số 
+			st.push(s[i] - '0');
+		} 
+		// nếu đây là toán tử
+		else 
+		{
+			int t2 =  st.top(); st.pop();
+			int t1 = st.top(); st.pop();
+			if(s[i] == '+') st.push(t1+t2);
+			else if(s[i] == '-') st.push(t1-t2);
+			else if(s[i] == '*') st.push(t1*t2);
+			else if(s[i] == '/') st.push(t1/t2);
+		}
+	}
+	cout << st.top() << endl ;
+}
+
+int main ()
+{
+	int testcase ; cin >> testcase;
+	string s ;
+	while(testcase--)
+	{
+		cin >> s ;
+		in(s);		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+    
+
+
+
+
+
+
+
+
+
