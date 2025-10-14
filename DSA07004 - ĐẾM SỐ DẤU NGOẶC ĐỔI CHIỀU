@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+int main ()
+{
+	int testcase ; cin >> testcase;
+	string s ;
+	while(testcase--)
+	{
+		cin >> s ;
+		stack<char> st ;
+		int ans = 0 ;
+		for(char c : s) {
+			if(c == '(') st.push(c);
+			else {
+				if(st.empty()){
+					++ans;
+					st.push('(');
+				}
+				else {
+					st.pop();// gặp ký tự ')' thì xóa  
+				}
+			}
+		}
+		cout << ans + st.size() / 2 << endl ;	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+    
+
+
+
+
+
+
+
+
+
