@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;  
+
+int n , k , a[11][11] , x[11];
+bool check[11];
+vector<vector<int> > ans;
+
+void add() 
+{
+	vector<int> copy(x + 1 ,x + n + 1);
+	ans.push_back(copy);
+}
+ 
+void Try(int i, int sum) 
+{
+	for (int j = 1; j <= n; j++) 
+	{
+		if (check[j]) continue; // cột j đã được dùng
+		
+		x[i] = j;   
+		check[j] = 1;      
+		
+		if (i == n && sum + a[i][j] == k) add();  // nếu đã chọn xong hàng cuối và tổng = k thì lưu lại
+		if (i < n) Try(i + 1, sum + a[i][j]);     // nếu chưa tới hàng cuối thì thử tiếp
+		
+		check[j] = 0;      // bỏ chọn cột j để thử cách khác
+	}
+}
+
+int main() {
+    cin >> n >> k ;
+	for(int i = 1 ; i <= n ; i++) 
+	{
+		for(int j = 1 ; j <= n ; j++) 
+		{
+			cin >> a[i][j];
+		}
+	} 
+	Try(1,0);
+	cout << ans.size() << "\n";
+	for(vector<int> &v : ans)
+	{
+		for(int &i : v) {
+			cout << i << " ";
+		}
+		cout << endl;
+	}
+}
+
+
+
+
