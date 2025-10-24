@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+
+using namespace std;
+
+int mod = 1000000007;
+ll luythua(ll n , ll k) {
+	if(k == 0) return 1 ;
+	if(k % 2 == 0) {
+		return luythua(1ll*n*n % mod , k / 2) % mod; 
+	} else {
+		return n * luythua(1ll*n*n % mod , k / 2) % mod;  
+	} 
+} 
+
+int main ()
+{
+	int t ; cin >> t;
+	while(t--) {
+		ll n , k ; cin >> n >> k ;
+		cout << luythua(n,k) << endl; 
+	} 
+}	
+
+	
+
+
+
+
+
+
+
+
+
+
+
