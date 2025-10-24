@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+using namespace std;
+
+
+
+
+//  x = 0 => không có gtri y thỏa mãn
+// x = 1 => y = 0
+// x = 2 => y = 0 , 1 , .. , 5 , 6 , 7 …
+// x = 3 => y = 0 , 1 , 2 … 4 , 5 , 6 …
+// x >= 4 => y = 0 , 1 , … , x + 1 , x + 2 
+int x[100001],y[100001];
+int m , n ;
+int count(int start , int end) 
+// dem cac gia tri tu [start , end]
+{
+	int *it1 = lower_bound(y,y+m,start); // trả về con trỏ đầu >= x
+	int *it2 = upper_bound(y,y+m,end); // trả về con trỏ đầu >  x
+	return it2 - it1 ;
+}
+int main()
+{
+    int t ; cin >> t;
+    while(t--)
+    {
+    	cin >> n >> m ;
+    	for(int i = 0 ; i < n ; i++) cin >> x[i];
+    	for(int i = 0 ; i < m ;i++) cin >> y[i];
+    	sort(y,y+m);
+    	int ans = 0 ;
+    	for(int i = 0 ; i < n ; i++) 
+    	{
+    		if(x[i] == 0) continue ;
+    		else if(x[i] == 1) {
+    			ans += count(0,0);
+			}
+			else if(x[i] == 2) {
+				ans += m - count(2,4); // loại đi số lượng phần tử của y có gtri tu 2-> 4
+			}
+			else if(x[i] == 3) {
+				ans += m - count(3,3); // loai di so luong phan tu cua y co gtri = 3
+			}
+			else {
+				ans += m - count(2,x[i]); // loại -> số lg gtri y co gtri tu 2 -> x[i]
+			}
+		}
+    	cout << ans << "\n";
+	} 
+}
