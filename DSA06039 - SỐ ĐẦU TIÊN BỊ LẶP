@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+#define pb push_back 
+using namespace std;
+
+int main ()
+{
+	int t ; cin >> t;
+	while(t--) {
+		int n , ok = 1 ; cin >> n ; int a[n];
+		map<int,int> mp ; 
+		for(int i = 0 ; i < n ; i++) {
+			cin >> a[i]; mp[a[i]]++	;
+		}  
+		for(int i = 0 ; i < n ; i++) {
+			if(mp[a[i]] == 2) {
+				cout << a[i] << endl;
+				ok = 0 ;
+				break ; 
+			}
+		} 
+		if(ok) cout << "NO\n"; 
+	} 
+	
+}
+
+	
+
+
+
+
+
+
+
+
+
+
+
