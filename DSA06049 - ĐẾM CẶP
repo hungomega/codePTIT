@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;
+
+using namespace std;
+
+// bai toan quy ve tim so luong lon hon bang  
+
+int main ()
+{
+	int t ; cin >> t;
+	while(t--) {
+		int n , k; cin >> n >> k ; 
+		int a[n];
+		for(int i = 0 ; i < n ; i++) cin >> a[i];
+		sort(a,a+n);
+		ll ans = 0 ; 
+	 	for(int i = 0 ; i < n - 1; i++) {
+	 		int *it = lower_bound(a + i + 1 , a + n , a[i] + k) ;
+	 		ans += it - (a + i + 1); // it luc nay tro toi vi tri dau tien lon hon  
+		} 
+		 cout << ans << endl  ;
+	} 
+}
