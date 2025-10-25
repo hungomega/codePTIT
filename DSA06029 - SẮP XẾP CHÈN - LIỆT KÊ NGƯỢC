@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>
+#define vll vector<long long> 
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl 
+
+int main ()
+{
+	int n ; cin >> n ; int a[n];
+	for(int &x : a) cin >> x ;
+	vector<vector<int> > ans ; 	
+	for(int i = 0 ; i < n ; i++) {
+		vector<int> v ; 
+ 		int key = i - 1 , value = a[i];
+ 		while(a[key] >= value && key >= 0) {
+ 			a[key + 1] = a[key];
+ 			--key;
+		 }
+		 a[key + 1] = value ;
+		for(int j = 0 ; j <= i ; j++) {
+			v.pb(a[j]); 
+		}
+		ans.pb(v); 
+	 }
+	for(int i = ans.size() - 1 ; i >= 0 ; i--) 
+	{	
+		cout << "Buoc " << i << ": "; 
+		for(int x : ans[i]) {
+			cout << x << " " ;
+		} 
+		e; 
+	}	 
+ }
