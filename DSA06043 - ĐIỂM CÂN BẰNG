@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define e cout << endl
+
+using namespace std;
+
+int cb(int a[] , int n , int sum) {
+	int xum = 0 ;
+	for(int i = 0 ; i < n ; i++) 
+	{
+		xum += a[i] ; 
+		if(xum == sum - xum + a[i]) return i + 1; // i la chi so   
+	} 
+	return -1 ; 
+} 
+
+int main ()
+{
+	int t ; cin >> t;
+	while(t--) {
+		int n ; cin >> n ;
+		int a[n] , sum = 0; 
+		for(int &x : a) 
+		{
+			cin >> x ; 
+			sum += x ; 
+		}
+		cout << cb(a,n,sum) << endl ; 
+	}
+}
+
+	
+
