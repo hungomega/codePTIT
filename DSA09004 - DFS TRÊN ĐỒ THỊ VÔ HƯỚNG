@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ;
+ 
+vector<int> ke[1005] ;// danh sách kề 
+int n , m , s ;
+int visited[1005]; // đánh dấu các đỉnh đã được thăm 
+
+void DFS(int u) {
+	cout << u << " "; // in ra các đỉnh mà đã thăm 
+	visited[u] = 1 ; // đánh dấu là đỉnh đã được thăm 
+	
+	// duyệt danh sách kề của u 
+	for(int x : ke[u]) {
+		if(!visited[x]) {
+			// loang các đỉnh của u  
+			DFS(x);
+		}
+	}
+}
+int main()
+{
+	int t ; cin >> t ;
+	while(t--) 
+	{
+		cin >> n >> m >> s;
+		int u , v ;
+		// lưu dưới dạng danh sách kề 
+		while(m--) {
+			cin >> u >> v ; // nhập vào danh sách cạnh 
+			ke[u].pb(v);
+			ke[v].pb(u);
+		}
+		DFS(s); e;
+		for(int i = 1 ; i <= n ; i++) 
+		{
+			visited[i] = 0 ;
+			ke[i].clear();
+		}
+	}
+}
