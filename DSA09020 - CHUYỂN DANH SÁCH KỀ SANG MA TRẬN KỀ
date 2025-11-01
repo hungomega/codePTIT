@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ; 
+
+int main()
+{
+	int n ; cin >> n ;
+	int a[n + 1][n + 1] = {};
+	string s ; int j ;
+	cin.ignore(); // xoá '\n' sau khi nhập cin >> n 
+	for(int i = 1 ; i <= n ; i++) 
+	{
+		getline(cin,s);
+		stringstream ss(s); // đọc các giá trị từ xâu s
+		while(ss >> j) { // gán từng từ cho j 
+			a[i][j] = 1 ; // các đỉnh j kề với cạnh i 
+		}
+	}
+	for(int i = 1 ; i <= n ; i++) 
+	{
+		for(int j = 1 ; j <= n ; j++)
+		{
+			cout << a[i][j] << " ";
+		} e;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
