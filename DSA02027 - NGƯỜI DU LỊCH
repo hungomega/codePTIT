@@ -1,0 +1,84 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++) 
+#define e cout << endl ;
+
+int n , c[100][100] , X[100] , d = 0 , mind = INT_MAX ;
+int visited[100] , cmin = INT_MAX;
+
+// X[i] lưu thành phố thứ i mà bạn đi thăm 
+
+void nhap()
+{
+	cin >> n ; 
+	for(int i = 1 ; i <= n ; i++)
+	{
+		for(int j = 1 ; j <= n ; j++)
+		{
+			cin >> c[i][j] ; 
+			if(c[i][j])
+			{
+				cmin = min(cmin , c[i][j]);
+			}
+		}
+	}
+}
+
+void Try(int i)
+{
+	for(int j = 1 ; j <= n ; j++)
+	{
+		if(visited[j] == 0) 
+		{
+			X[i] = j ;
+			visited[j] = 1 ; // Tránh thăm lại thành phố 
+			d += c[X[i - 1]][X[i]];
+			if(i == n) 
+			{
+				mind = min(mind , d + c[X[i]][1]);
+			}
+			// đang đi đến thành phố thứ i , chi phí : d , d_min
+			else if(d + (n - i + 1) * cmin < mind) 
+			{
+				Try(i + 1);
+			}
+			d -= c[X[i - 1]][X[i]];
+			visited[j] = 0 ;
+		}
+	}
+}
+
+int main () 
+{
+	nhap();
+	X[1] = 1 ;
+	visited[1] = 1 ;
+	Try(2) ;
+	cout << mind;
+	return 0 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
