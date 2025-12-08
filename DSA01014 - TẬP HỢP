@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ; 
+#define endl "\n"
+
+int n , k , s , x[11] , cnt = 0;
+
+void Try(int i , int pre , int sum) 
+{
+	for(int j = pre + 1 ; j <= n ; j++) {
+		x[i] = j ;
+		if(i == k && sum + j == s) ++cnt;
+		else if(i < k) {
+			Try(i + 1 , j , sum + j);
+		}
+	}
+}
+
+int main() 
+{
+	while(cin >> n >> k >> s) {
+		if(n == 0 && k == 0 && s == 0) 
+		{
+			break;
+		}
+		Try(1 , 0 , 0);
+		cout << cnt << endl ;
+		cnt = 0 ;
+	}
+	return 0 ;
+}
+
+
+
+
+
