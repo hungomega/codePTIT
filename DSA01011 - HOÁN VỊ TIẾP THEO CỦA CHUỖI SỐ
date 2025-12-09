@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ; 
+#define endl "\n"
+
+
+int t ;
+int main () 
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	
+	int stt;
+    cin >> t ;
+    string s  ;
+	for(int i = 1 ; i <= t ; i++) {
+	
+		cin >> stt >> s;
+	
+		if(!next_permutation(s.begin() , s.end())) 
+		{
+			cout << stt << " BIGGEST";
+		}
+		else {
+			cout << stt << " " << s; 
+		}e;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
