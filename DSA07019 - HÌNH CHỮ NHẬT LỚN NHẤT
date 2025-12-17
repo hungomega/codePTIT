@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back 
+#define ll long long 
+#define vi vector<int>	
+#define vc vector<char>	
+#define vll vector<long long>
+#define vpi vector<pair<int,int>>  
+#define FOR(i,a,b) for(int i = a ; i < b ; i++)  
+#define e cout << endl ; 
+#define endl "\n"
+
+int main ()
+{
+	cin.tie(0);
+	ios_base::sync_with_stdio(0);
+	int t ; cin >> t;
+	while(t--) {
+		int n ; cin >> n ;
+		int a[n];
+		for(int i = 0 ; i < n ; i++) cin >> a[i];
+		
+		stack<int> st; // lưu chỉ số 
+		int nle[n]; // lưu chỉ số j của phần tử đầu tiên bên phải a[i]
+		for(int i = n - 1 ; i >= 0 ; i--) 
+		{
+			while(!st.empty() && a[i] <= a[st.top()]) 
+			{
+				st.pop(); // phần tử bên phải >= thì pop 
+			}
+			if(st.empty()) {
+				nle[i] = n ;
+			}
+			else {
+				nle[i] = st.top();
+			}
+			st.push(i);
+		} 
+		while(!st.empty()) st.pop();
+		
+		int ple[n]; // lưu chỉ số k của phần tử đầu tiên bên trái < a[i]
+		for(int i = 0 ; i < n ; i++) 
+		{
+			while(!st.empty() && a[i] <= a[st.top()]) 
+			{
+				st.pop(); // phần tử bên trái >= a[i] thì pop 
+			}
+			if(st.empty()) {
+				ple[i] = -1 ;
+			}
+			else {
+				ple[i] = st.top();
+			}
+			st.push(i);
+		} 
+		while(!st.empty()) st.pop();
+		ll ans = 0 ;
+		for(int i = 0 ; i < n ; i++) 
+		{
+			ans = max(ans,1ll * a[i] * (nle[i] - 1 - ple[i]));
+		}
+		cout << ans << endl;
+	}
+	return 0 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
